@@ -57,6 +57,12 @@ function Chessboard() {
     }
   };
 
+  const dropPiece=(e:React.MouseEvent)=>{
+    if(activePiece){
+      activePiece=null;
+    }
+  }
+
   let board = [];
   for (let j = verticalAxis.length - 1; j >= 0; j--) {
     for (let i = 0; i < horizontalAxis.length; i++) {
@@ -75,6 +81,7 @@ function Chessboard() {
     <div
       onMouseMove={(e) => movePiece(e)}
       onMouseDown={(e) => grabPiece(e)}
+      onMouseUp={(e) => dropPiece(e)}
       id="chessboard"
     >
       {board}
