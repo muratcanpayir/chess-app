@@ -35,7 +35,15 @@ for (let p = 0; p < 2; p++) {
 
 function Chessboard() {
   const grabPiece=(e:React.MouseEvent)=>{
-console.log(e.target)
+    const element=e.target as HTMLElement;
+      if(element.classList.contains("chess-piece")){
+        console.log(e);
+        const x =e.clientX;
+        const y=e.clientY;
+        element.style.position="absolute";
+        element.style.left=`${x}px`;
+        element.style.top=`${y}px`;
+      }
   }
 
   let board = [];
