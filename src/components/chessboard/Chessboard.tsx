@@ -34,6 +34,10 @@ for (let p = 0; p < 2; p++) {
 }
 
 function Chessboard() {
+  const grabPiece=(e:React.MouseEvent)=>{
+console.log(e.target)
+  }
+
   let board = [];
   for (let j = verticalAxis.length - 1; j >= 0; j--) {
     for (let i = 0; i < horizontalAxis.length; i++) {
@@ -48,7 +52,7 @@ function Chessboard() {
       board.push(<Tile key={`${j},${i}`} image={image} number={number} />);
     }
   }
-  return <div id="chessboard">{board}</div>;
+  return <div onMouseDown={e=>grabPiece(e)} id="chessboard">{board}</div>;
 }
 
 export default Chessboard;
