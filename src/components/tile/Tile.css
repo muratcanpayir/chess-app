@@ -1,4 +1,6 @@
 .tile{
+  display: grid;
+  place-content: center;
   width: 100px;
   height: 100px;
 }.dark-tile{
@@ -6,4 +8,7 @@
 }
 .light-tile{
   background-color: rgb(243, 243, 243);
+}
+.tile img{
+  width: 80px;
 }
