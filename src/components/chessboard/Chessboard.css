@@ -5,13 +5,3 @@
   height: 804px;
   border: 2px solid black;
 }
-#chessboard .tile{
-  width: 100px;
-  height: 100px;
-}
-#chessboard .dark-tile{
-  background-color: rgb(134, 125, 125);
-}
-#chessboard .light-tile{
-  background-color: rgb(243, 243, 243);
-}
