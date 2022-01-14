@@ -68,13 +68,20 @@ for (let p = 0; p < 2; p++) {
 function Chessboard() {
   const chessboardRef = useRef<HTMLDivElement>(null);
 
+  const [gridX,setGridX]=useState(0);
+  const [gridY,setGridY]=useState(0);
   const [pieces, setPieces] = useState<Piece[]>(initialBoardState);
 
   let activePiece: HTMLElement | null = null;
 
   const grabPiece = (e: React.MouseEvent) => {
     const element = e.target as HTMLElement;
-    if (element.classList.contains("chess-piece")) {
+    const chessboard=chessboardRef.current;
+    if (element.classList.contains("chess-piece") && chessboard) {
+      const setX=Math.floor((e.clientX-chessboard.offsetLeft)/100);
+      const setY=Math.abs(Math.ceil((e.clientY-chessboard.offsetTop-800)/100));
+      setGridX(setX);
+      setGridY(setY);
       const x = e.clientX - 50;
       const y = e.clientY - 50;
       element.style.position = "absolute";
@@ -115,9 +122,16 @@ function Chessboard() {
   };
 
   const dropPiece = (e: React.MouseEvent) => {
-    if (activePiece) {
+    const chessboard=chessboardRef.current;
+    if (activePiece && chessboard) {
+      const x=Math.floor((e.clientX-chessboard.offsetLeft)/100);
+      const y=Math.abs(Math.ceil((e.clientY-chessboard.offsetTop-800)/100));
       setPieces((value) => {
         const pieces = value.map((p) => {
+          if(p.x===gridX && p.y===gridY){
+            p.x=x;
+            p.y=y;
+          }
           return p;
         });
         return pieces;
