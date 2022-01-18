@@ -10,9 +10,14 @@ export default class Referee {
                         console.log("valid move");
                         return true;
                     }
+                } else {
+                    if (px === x && y - py === 1) {
+                        return true;
+                    }
                 }
             }
         }
+
 
         return false;
     }
