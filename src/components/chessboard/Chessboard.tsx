@@ -65,6 +65,7 @@ for (let p = 0; p < 2; p++) {
   });
 }
 
+
 function Chessboard() {
   const chessboardRef = useRef<HTMLDivElement>(null);
 
